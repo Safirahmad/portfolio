@@ -1,0 +1,225 @@
+{% include 'header.html' %}
+<main>
+    <article>
+
+        <section class="section recent-post" id="recent" aria-labelledby="recent-label">
+
+            <div class="container">
+                <div class="">
+
+                    <br>
+                    <ul class="grid-list">
+                        {% for m in sl %}
+                        <li>
+                            <div>
+                                <div class="">
+                                    <div class="hero-banner">
+                                        <img src="{{ m.images.url }}" width="600px" height="490px" alt="Wren Clark"
+                                            class="w-100" />
+                                        <div class="card-wrapper">
+                                            {% for tag in m.tags.all %}
+                                            <div class="card-tag">
+                                                <a href="#" class="span hover-2">{{ tag.name }}</a>
+                                            </div>
+                                            {% endfor %}
+
+                                            <div class="wrapper">
+                                                <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                                                <span class="span">{{ m.reading_time }}</span>
+                                            </div><div class="wrapper">
+                                              
+
+                                                {{ m.author.username }}
+                                            </div>
+                                        </div>
+                                        <h3 class="headline headline-3 card-title">
+                                            {{ m.title }}
+                                        </h3>
+
+                                        <p class="card-text">
+                                            {{ m.content }}
+                                        </p>
+
+                                        
+                                    </div>
+                                </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+
+                    <nav aria-label="pagination" class="pagination">
+                        <a href="#" class="pagination-btn" aria-label="previous page">
+                            <ion-icon name="arrow-back" aria-hidden="true"></ion-icon>
+                        </a>
+
+                        <a href="#" class="pagination-btn">1</a>
+                        <a href="#" class="pagination-btn">2</a>
+                        <a href="#" class="pagination-btn">3</a>
+                        <a href="#" class="pagination-btn" aria-label="more page">...</a>
+
+                        <a href="#" class="pagination-btn" aria-label="next page">
+                            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                        </a>
+                    </nav>
+                </div>
+
+                <div class="post-aside grid-list">
+                    <div class="card aside-card">
+                        <h3 class="headline headline-2 aside-title">
+                            <span class="span">Popular Posts</span>
+                        </h3>
+
+                        <ul class="popular-list">
+                            <li>
+                                {% for lm in blogs %}
+                                <div class="popular-card">
+                                    <figure class="card-banner img-holder" style="--width: 64; --height: 64">
+                                        <img src="{{ lm.images.url }}" width="64" height="64"
+                                            loading="lazy" alt="Creating is a privilege but it’s also a gift"
+                                            class="img-cover" />
+                                    </figure>
+
+                                    <div class="card-content">
+                                        <h4 class="headline headline-4 card-title">
+                                            <a href="{% url 'blog_detail' slug=lm.slugs %}" class="link hover-2">{{lm.title}}</a>
+                                        </h4>
+
+                                        <div class="warpper">
+                                            <p class="card-subtitle">{{ lm.author.username }}</p>
+
+                                            <time class="publish-date" datetime="2022-04-15">{{lm.created_at|date:"F j, Y" }}</time>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card aside-card">
+                        <h3 class="headline headline-2 aside-title">
+                            <span class="span">Contact Me</span>
+                        </h3>
+
+                        <ul class="comment-list">
+                            <li>
+                                <div class="comment-card">
+                                    <form action="" style="
+                      background-color: transparent;
+                      padding: 20px;
+                      border: 1px solid rgba(255, 255, 255, 0.3);
+                      border-radius: 10px;
+                      max-width: 400px;
+                    ">
+                                        <label for="name" style="color: white">Name</label><br />
+                                        <input type="text" id="name" name="name" style="
+                        width: 100%;
+                        padding: 10px;
+                        margin-bottom: 15px;
+                        border: 1px solid #ccc;
+                        border-radius: 8px;
+                      " /><br />
+
+                                        <label for="email" style="color: white">Email</label><br />
+                                        <input type="email" id="email" name="email" style="
+                        width: 100%;
+                        padding: 10px;
+                        margin-bottom: 15px;
+                        border: 1px solid #ccc;
+                        border-radius: 8px;
+                      " /><br />
+
+                                        <label for="message" style="color: white">Message</label><br />
+                                        <textarea id="message" name="message" rows="4" style="
+                        width: 100%;
+                        padding: 10px;
+                        border: 1px solid #ccc;
+                        border-radius: 8px;
+                      "></textarea>
+                                    </form>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card aside-card insta-card">
+                        <a href="#" class="logo">
+                            <img src="./assets/images/logo.svg" width="119" height="37" loading="lazy"
+                                alt="Wren logo" />
+                        </a>
+
+                        <p class="card-text">Follow us on instagram</p>
+
+                        <ul class="insta-list">
+                            <li>
+                                <a href="#" class="insta-post img-holder" style="--width: 276; --height: 277">
+                                    <img src="./assets/images/insta-post-1.png" width="276" height="277" loading="lazy"
+                                        alt="insta post" class="img-cover" />
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="insta-post img-holder" style="--width: 276; --height: 277">
+                                    <img src="./assets/images/insta-post-2.png" width="276" height="277" loading="lazy"
+                                        alt="insta post" class="img-cover" />
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="insta-post img-holder" style="--width: 276; --height: 277">
+                                    <img src="./assets/images/insta-post-3.png" width="276" height="277" loading="lazy"
+                                        alt="insta post" class="img-cover" />
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="insta-post img-holder" style="--width: 276; --height: 277">
+                                    <img src="./assets/images/insta-post-4.png" width="276" height="277" loading="lazy"
+                                        alt="insta post" class="img-cover" />
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="insta-post img-holder" style="--width: 276; --height: 277">
+                                    <img src="./assets/images/insta-post-5.png" width="276" height="277" loading="lazy"
+                                        alt="insta post" class="img-cover" />
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="insta-post img-holder" style="--width: 276; --height: 277">
+                                    <img src="./assets/images/insta-post-6.png" width="276" height="277" loading="lazy"
+                                        alt="insta post" class="img-cover" />
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="insta-post img-holder" style="--width: 276; --height: 277">
+                                    <img src="./assets/images/insta-post-7.png" width="276" height="277" loading="lazy"
+                                        alt="insta post" class="img-cover" />
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="insta-post img-holder" style="--width: 276; --height: 277">
+                                    <img src="./assets/images/insta-post-8.png" width="276" height="277" loading="lazy"
+                                        alt="insta post" class="img-cover" />
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="insta-post img-holder" style="--width: 276; --height: 277">
+                                    <img src="./assets/images/insta-post-9.png" width="276" height="277" loading="lazy"
+                                        alt="insta post" class="img-cover" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </article>
+</main>
+
+{% include 'footer.html' %}
