@@ -18,4 +18,8 @@ class home_slider(models.Model):
     slide_icone_one = models.FileField(upload_to='mainslider', validators=[validate_svg])
     slide_icone_two = models.FileField(upload_to='mainslider', validators=[validate_svg])
 
+class skills(models.Model):
+    skill_text= models.CharField(max_length=20)
+    skill_image = models.ImageField(upload_to='skills')
+
 # Create your models here.

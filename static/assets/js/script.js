@@ -112,17 +112,3 @@ window.addEventListener("resize", function () {
   moveSliderItem();
 });
 
-
-// Tab Section 
-const links = document.querySelectorAll('.tab-link');
-  const bodies = document.querySelectorAll('.tab-body');
-
-  links.forEach(link => {
-    link.addEventListener('click', () => {
-      links.forEach(el => el.classList.remove('active'));
-      bodies.forEach(el => el.classList.remove('active'));
-
-      link.classList.add('active');
-      document.getElementById(link.dataset.tab).classList.add('active');
-    });
-  });

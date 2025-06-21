@@ -27,41 +27,46 @@
                                                 <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
 
                                                 <span class="span">{{ m.reading_time }}</span>
-                                            </div><div class="wrapper">
-                                              
+                                            </div>
+                                            <div class="wrapper">
+
 
                                                 {{ m.author.username }}
                                             </div>
                                         </div>
                                         <h3 class="headline headline-3 card-title">
-                                            {{ m.title }}
+                                            {{ m.title }}</a>
                                         </h3>
 
                                         <p class="card-text">
                                             {{ m.content }}
                                         </p>
 
-                                        
+
                                     </div>
                                 </div>
                         </li>
                         {% endfor %}
                     </ul>
 
-                    <nav aria-label="pagination" class="pagination">
-                        <a href="#" class="pagination-btn" aria-label="previous page">
-                            <ion-icon name="arrow-back" aria-hidden="true"></ion-icon>
+                    <nav class="pagination" aria-label="pagination"
+                        style="display: flex; justify-content: space-between; gap: 1rem;">
+                        {% if previous_blog %}
+                        <a href="{% url 'blog_detail' previous_blog.slugs %}" class="pagination-btn"
+                            aria-label="previous blog">
+                            <ion-icon name="arrow-back" aria-hidden="true"></ion-icon> 
                         </a>
+                        {% endif %}
 
-                        <a href="#" class="pagination-btn">1</a>
-                        <a href="#" class="pagination-btn">2</a>
-                        <a href="#" class="pagination-btn">3</a>
-                        <a href="#" class="pagination-btn" aria-label="more page">...</a>
-
-                        <a href="#" class="pagination-btn" aria-label="next page">
-                            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                        {% if next_blog %}
+                        <a href="{% url 'blog_detail' next_blog.slugs %}" class="pagination-btn" aria-label="next blog">
+                             <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
                         </a>
+                        {% endif %}
                     </nav>
+
+
+
                 </div>
 
                 <div class="post-aside grid-list">
@@ -75,20 +80,20 @@
                                 {% for lm in blogs %}
                                 <div class="popular-card">
                                     <figure class="card-banner img-holder" style="--width: 64; --height: 64">
-                                        <img src="{{ lm.images.url }}" width="64" height="64"
-                                            loading="lazy" alt="Creating is a privilege but it’s also a gift"
-                                            class="img-cover" />
+                                        <img src="{{ lm.images.url }}" width="64" height="64" loading="lazy"
+                                            alt="Creating is a privilege but it’s also a gift" class="img-cover" />
                                     </figure>
 
                                     <div class="card-content">
                                         <h4 class="headline headline-4 card-title">
-                                            <a href="{% url 'blog_detail' slug=lm.slugs %}" class="link hover-2">{{lm.title}}</a>
+                                            <a href="{% url 'blog_detail' slug=lm.slugs %}"
+                                                class="link hover-2">{{lm.title}}</a>
                                         </h4>
 
                                         <div class="warpper">
                                             <p class="card-subtitle">{{ lm.author.username }}</p>
 
-                                            <time class="publish-date" datetime="2022-04-15">{{lm.created_at|date:"F j, Y" }}</time>
+                                            <time class="publish-date" datetime="2022-04-15">{{lm.created_at|date:"Fj,Y" }}</time>
                                         </div>
                                     </div>
                                 </div>
