@@ -20,6 +20,12 @@
    * COLORS
    */
  
+  .card.tab-pane.fade {
+    background-color: 0e1729;
+    
+  }
+  
+
 
     .tab-container {
       width: 100%;

@@ -3,6 +3,9 @@ from tinymce.models import HTMLField
 
 from django.db import models
 from django.core.exceptions import ValidationError
+from django.contrib.auth import get_user_model
+
+
 
 def validate_svg(file):
     if not file.name.endswith('.svg'):
@@ -19,7 +22,13 @@ class home_slider(models.Model):
     slide_icone_two = models.FileField(upload_to='mainslider', validators=[validate_svg])
 
 class skills(models.Model):
-    skill_text= models.CharField(max_length=20)
+    User = get_user_model()
+    skill_text= models.CharField(max_length=50)
     skill_image = models.ImageField(upload_to='skills')
+    created_at = models.DateTimeField(auto_now_add=True , null=True ,  blank= True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    def __str__(self):
+        return self.skill_text
+    
 
 # Create your models here.
