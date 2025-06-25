@@ -20,6 +20,17 @@
    * COLORS
    */
  
+.list-group-item {
+    background-color: transparent !important;
+  }
+.list-group-item {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+
+
+
   .card.tab-pane.fade {
     background-color: 0e1729;
     

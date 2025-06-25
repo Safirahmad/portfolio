@@ -41,3 +41,12 @@ class Blog(models.Model):
         word_count = len(plain_text.split())
         minutes = max(1, round(word_count / 200))
         return f"{minutes} min read"
+
+
+class Blog_Header(models.Model):
+
+    blog_title = models.CharField(max_length=50)
+    blog_des = models.TextField()
+
+    def __str__(self):
+        return self.blog_title

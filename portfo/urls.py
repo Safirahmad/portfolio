@@ -26,7 +26,7 @@ urlpatterns = [
     path("details/<slug:slug>", views.blog_detail, name="blog_detail"),
     path("blog/", views.blogs, name='blog'),
     path("projects/",views.project, name='projects'),
-    path('project/<int:pk>/', views.project_detail, name='project_detail'),
+    path('project/<slug:pslug>/', views.project_detail, name='project_detail'),
 
 
 ]

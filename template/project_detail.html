@@ -1,0 +1,219 @@
+{% include 'header.html' %}
+<main>
+    <article>
+
+        <section class="section recent-post" id="recent" aria-labelledby="recent-label">
+
+            <div class="container">
+                <div class="">
+
+                    <br>
+                    <ul class="grid-list">
+                        {% for pro in sl %}
+                        <li>
+                            <div>
+                                <div class="">
+                                    <div class="hero-banner">
+                                        <div id="carouselExampleIndicators{{ pro.id }}" class="carousel slide"
+                                            data-bs-ride="carousel">
+                                            <div class="carousel-indicators">
+                                                {% for img in pro.images.all %}
+                                                <button type="button"
+                                                    data-bs-target="#carouselExampleIndicators{{ pro.id }}"
+                                                    data-bs-slide-to="{{ forloop.counter0 }}"
+                                                    class="{% if forloop.first %}active{% endif %}" aria-current="true"
+                                                    aria-label="Slide {{ forloop.counter }}"></button>
+                                                {% endfor %}
+                                            </div>
+
+                                            <div class="carousel-inner">
+                                                {% for img in pro.images.all %}
+                                                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                                    <img src="{{ img.image.url }}" width="600" height="490"
+                                                        alt="{{ pro.title }}" class="w-100" />
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+
+                                            <button class="carousel-control-prev" type="button"
+                                                data-bs-target="#carouselExampleIndicators{{ pro.id }}"
+                                                data-bs-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next" type="button"
+                                                data-bs-target="#carouselExampleIndicators{{ pro.id }}"
+                                                data-bs-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </button>
+                                        </div>
+
+
+
+                                        <div class="card-wrapper">
+
+                                            <div class="card-tag">
+                                                <a href="#" class="span hover-2">{{ pro.category.name }}</a>
+                                            </div>
+
+
+
+                                            <div class="wrapper">
+
+
+                                                {{ pro.author.username }}
+                                            </div>
+                                            <div class="wrapper">
+                                                {{ pro.created_at|date:"F j, Y" }}
+                                            </div>
+                                        </div>
+                                        <h3 class="headline headline-3 card-title">
+                                            {{ pro.title }}</a>
+                                        </h3>
+
+                                        <p class="card-text">
+                                            {{ pro.description|safe }}
+                                        </p>
+
+
+                                    </div>
+                                </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <nav class="pagination" aria-label="pagination"
+                        style="display: flex; justify-content: space-between; gap: 1rem;">
+                        {% if previous_blog %}
+                        <a href="{% url 'project_detail' pslug=previous_blog.auto_slug %}" class="pagination-btn"
+                            aria-label="previous blog">
+                            <ion-icon name="arrow-back" aria-hidden="true"></ion-icon>
+                        </a>
+                        {% endif %}
+
+                        {% if next_blog %}
+                        <a href="{% url 'project_detail' pslug=next_blog.auto_slug %}" class="pagination-btn"
+                            aria-label="next blog">
+                            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                        </a>
+                        {% endif %}
+                    </nav>
+
+
+
+
+
+
+                </div>
+
+                <div class="post-aside grid-list">
+                    <div class="card aside-card">
+                        <h3 class="headline headline-2 aside-title">
+                            <span class="span">All Projects</span>
+                        </h3>
+
+                        <ul class="popular-list">
+                            <li>
+                                {% for lm in sideprojects %}
+                                <div class="popular-card">
+                                    {% with lm.images.first as img %}
+                                    {% if img %}
+                                    <figure class="card-banner img-holder" style="--width: 64; --height: 64">
+                                        <img src="{{ img.image.url }}" width="1602" height="903" loading="lazy"
+                                            alt="{{ project.title }}" class="img-cover" />
+                                    </figure>
+                                    {% endif %}
+                                    {% endwith %}
+
+
+                                    <div class="card-content">
+                                        <h4 class="headline headline-4 card-title">
+                                            <a href="{% url 'project_detail' pslug=lm.auto_slug %}"
+                                                class="link hover-2">{{lm.title}}</a>
+                                        </h4>
+
+                                        <div class="warpper">
+                                            <p class="card-subtitle">{{ lm.category }}</p>
+
+                                            <time class="publish-date" datetime="2022-04-15">{{lm.created_at|date:"Fj,Y"}}</time>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card aside-card">
+                        <h3 class="headline headline-2 aside-title">
+                            <span class="span">Contact Me</span>
+                        </h3>
+
+                        <ul class="comment-list">
+                            <li>
+                                <div class="comment-card">
+                                    <form action="" style="
+                      background-color: transparent;
+                      padding: 20px;
+                      border: 1px solid rgba(255, 255, 255, 0.3);
+                      border-radius: 10px;
+                      max-width: 400px;
+                    ">
+                                        <label for="name" style="color: white">Name</label><br />
+                                        <input type="text" id="name" name="name" style="
+                        width: 100%;
+                        padding: 10px;
+                        margin-bottom: 15px;
+                        border: 1px solid #ccc;
+                        border-radius: 8px;
+                      " /><br />
+
+                                        <label for="email" style="color: white">Email</label><br />
+                                        <input type="email" id="email" name="email" style="
+                        width: 100%;
+                        padding: 10px;
+                        margin-bottom: 15px;
+                        border: 1px solid #ccc;
+                        border-radius: 8px;
+                      " /><br />
+
+                                        <label for="message" style="color: white">Message</label><br />
+                                        <textarea id="message" name="message" rows="4" style="
+                        width: 100%;
+                        padding: 10px;
+                        border: 1px solid #ccc;
+                        border-radius: 8px;
+                      "></textarea>
+                                    </form>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card aside-card insta-card">
+                        
+                        {% for sh in soci_head %}
+                        <p class="card-text">{{sh.socila_header}}</p>
+                        {% endfor %}
+
+                        <ul class="insta-list">
+                            {% for sd in soc_all %}
+                            <li>
+                                <a href="{{sd.socila_link}}" class="insta-post img-holder" style="--width: 50; --height: 50" target="_blank">
+                                    <img src="{{sd.social_image.url}}" width="100" height="100" loading="lazy"
+                                        alt="insta post" class="img-cover" />
+                                </a>
+                            </li>
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+        </section>
+    </article>
+</main>
+
+{% include 'footer.html' %}

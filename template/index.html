@@ -2,6 +2,11 @@
 
 <main>
   <article>
+    <style>
+      .cardbg {
+        padding: 7px 7px 7px 7px;
+      }
+    </style>
     <section class="hero" id="home" aria-label="home">
       {% for s in sld %}
       <div class="container">
@@ -53,12 +58,11 @@
         <div class="card topic-card">
           <div class="card-content">
             <h2 class="headline headline-2 section-title card-title" id="topic-label">
-              Hot topics
+              Educations
             </h2>
 
             <p class="card-text">
-              Don't miss out on the latest news about Travel tips, Hotels
-              review, Food guide...
+              All Educations And Certifications
             </p>
 
             <div class="btn-group">
@@ -74,80 +78,39 @@
 
           <div class="slider" data-slider>
             <ul class="slider-list" data-slider-container>
+
+              {% for ed in all_educa%}
               <li class="slider-item">
-                <a href="#" class="slider-card">
-                  <figure class="slider-banner img-holder" style="--width: 507; --height: 618">
-                    <img src="./static/assets/images/topic-1.png" width="507" height="618" loading="lazy" alt="Sport"
-                      class="img-cover" />
-                  </figure>
 
-                  <div class="slider-content">
-                    <span class="slider-title">Sport</span>
-
-                    <p class="slider-subtitle">38 Articles</p>
+                <div class="card" style="border-radius: 10px; ">
+                  <div class="card-body">
+                    <h2 class="card-title">{{ed.educ_title}}</h2>
+                    <p class="">{{ed.educ_des}}</p>
                   </div>
-                </a>
-              </li>
+                  <ul class="list-group ">
 
-              <li class="slider-item">
-                <a href="#" class="slider-card">
-                  <figure class="slider-banner img-holder" style="--width: 507; --height: 618">
-                    <img src="./static/assets/images/topic-2.png" width="507" height="618" loading="lazy" alt="Travel"
-                      class="img-cover" />
-                  </figure>
+                    <li class="cardbg"><strong>{{ed.educ_camp}}:</strong> {{ed.educ_camp1}}</li>
+                    <li class="cardbg"><strong>Start Date:</strong> {{ed.educ_start_date}}</li>
+                    <li class="cardbg"><strong>End Date:</strong> {{ed.educ_end_date}}</li>
+                    <li class="cardbg"><strong>Duration:</strong> {{ed.educ_durations}}</li>
+                    <li class="cardbg"><strong>{{ed.educ_certifi}}:</strong> {{ed.educ_camp_id}}</li>
+                  </ul>
+                  <div class="card-body">
 
-                  <div class="slider-content">
-                    <span class="slider-title">Travel</span>
+                    {% if ed.educ_verify %}
+                    <a href="{{ ed.educ_verify }}" class="card-link" target="_blank">Click to Verify</a>
+                    {% else %}
+                    <span class="text-muted">No verification link</span>
+                    {% endif %}
 
-                    <p class="slider-subtitle">63 Articles</p>
+
                   </div>
-                </a>
+                </div>
+
+
               </li>
+              {% endfor %}
 
-              <li class="slider-item">
-                <a href="#" class="slider-card">
-                  <figure class="slider-banner img-holder" style="--width: 507; --height: 618">
-                    <img src="./static/assets/images/topic-3.png" width="507" height="618" loading="lazy" alt="Design"
-                      class="img-cover" />
-                  </figure>
-
-                  <div class="slider-content">
-                    <span class="slider-title">Design</span>
-
-                    <p class="slider-subtitle">78 Articles</p>
-                  </div>
-                </a>
-              </li>
-
-              <li class="slider-item">
-                <a href="#" class="slider-card">
-                  <figure class="slider-banner img-holder" style="--width: 507; --height: 618">
-                    <img src="./static/assets/images/topic-4.png" width="507" height="618" loading="lazy" alt="Movie"
-                      class="img-cover" />
-                  </figure>
-
-                  <div class="slider-content">
-                    <span class="slider-title">Movie</span>
-
-                    <p class="slider-subtitle">125 Articles</p>
-                  </div>
-                </a>
-              </li>
-
-              <li class="slider-item">
-                <a href="#" class="slider-card">
-                  <figure class="slider-banner img-holder" style="--width: 507; --height: 618">
-                    <img src="./static/assets/images/topic-5.png" width="507" height="618" loading="lazy"
-                      alt="Lifestyle" class="img-cover" />
-                  </figure>
-
-                  <div class="slider-content">
-                    <span class="slider-title">Lifestyle</span>
-
-                    <p class="slider-subtitle">78 Articles</p>
-                  </div>
-                </a>
-              </li>
             </ul>
           </div>
         </div>
@@ -155,7 +118,7 @@
     </section>
     <br />
     <!-- 
-        - #POPULAR TAGS
+        - #Skills
       -->
 
     <section class="tags" aria-labelledby="tag-label">
@@ -165,10 +128,8 @@
         </h2>
 
         <p class="section-text">Most searched keywords</p>
-
-        <h2>Programming Languages</h2>
         <ul class="grid-list">
-          
+
           {% for skl in skil_data %}
           <li>
             {% with myvalue=skl.skill_text %}
@@ -184,113 +145,18 @@
       </div>
     </section>
 
+
     <!-- #Project Section -->
-
-    <!-- <section class="section feature" aria-label="feature" id="featured" style="margin-top: 60px">
-      <div class="container">
-        <h2 class="headline headline-2 section-title" id="tag-label">
-          <span class="span">Projects</span>
-        </h2>
-
-        <p class="section-text">Most searched keywords</p>
-        <div class="container responsive-tabs">
-          <ul class="nav nav-tabs" role="tablist">
-            {% for ct in category %}
-            <li class="nav-item">
-              <a href="#pane-{{ ct.id }}" class="nav-link {% if forloop.first %}active{% endif %}" data-bs-toggle="tab"
-                role="tab">
-                {{ ct.name }}
-              </a>
-            </li>
-            {% endfor %}
-          </ul>
-
-          <div id="content" class="tab-content" role="tablist">
-            {% for ct in category %}
-            <div id="pane-{{ ct.id }}" class="card tab-pane fade {% if forloop.first %}show active{% endif %}"
-              role="tabpanel">
-              <section>
-                <div>
-                  <ul class="feature-list">
-                    {% for project in category_projects|get_item:ct.id %}
-                    <li>
-                      <div class="card feature-card">
-                        {% with project.images.first as img %}
-                        {% if img %}
-                        <figure class="card-banner img-holder" style="--width: 1602; --height: 903">
-                          <img src="{{ img.image.url }}" width="1602" height="903" loading="lazy"
-                            alt="{{ project.title }}" class="img-cover" />
-                        </figure>
-                        {% endif %}
-                        {% endwith %}
-
-                        <div class="card-content">
-                          <div class="card-wrapper">
-                            <div class="card-tag">
-                              <a href="#" class="span hover-2">{{ project.category.name }}</a>
-                            </div>
-
-                            <div class="wrapper">
-                              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
-                              <span class="span">{{ project.author.username }}</span>
-                            </div>
-
-                            <div class="wrapper">
-                              <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>
-                              <span class="span">{{ project.created_at|date:"F j, Y" }}</span>
-                            </div>
-
-                            {% if project.live_url %}
-                            <div class="wrapper">
-                              <ion-icon name="globe-outline" aria-hidden="true"></ion-icon>
-                              <a href="{{ project.live_url }}" target="_blank" class="span hover-2">Live Link</a>
-                            </div>
-                            {% endif %}
-                          </div>
-
-                          <h4 class="headline headline-3">
-                            <a href="{% url 'project_detail' project.id %}" class="card-title hover-2">
-                              {{ project.title }}
-                            </a>
-                          </h4>
-
-                          <p class="card-subtitle">
-                            {{ project.description|truncatechars:100 }}
-                          </p>
-
-                          <div class="card-wrapper">
-                            <div class="profile-card">
-                              <div>
-                                <p class="card-title">{{ project.author.username }}</p>
-                                <p class="card-subtitle">{{ project.created_at|date:"F j, Y" }}</p>
-                              </div>
-                            </div>
-                            <a href="{% url 'project_detail' project.id %}" class="card-btn">View Project</a>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    {% empty %}
-                    <p>No projects found in this category.</p>
-                    {% endfor %}
-                  </ul>
-                </div>
-              </section>
-            </div>
-            {% endfor %}
-          </div>
-
-        </div>
-      </div>
-    </section> -->
-
     <section class="section feature" aria-label="feature" id="featured" style="margin-top: 60px">
       <div class="container">
+        {% for ph in proj_header %}
         <h2 class="headline headline-2 section-title" id="tag-label">
-          <span class="span">Projects</span>
+          <span class="span">{{ph.header_title}}</span>
         </h2>
-
-        <p class="section-text">Most searched keywords</p>
+        <span>
+          <p class="section-text">{{ ph.header_des|safe }}</p>
+        </span>
+        {% endfor %}
 
         <div class="container responsive-tabs">
           <ul class="nav nav-tabs" role="tablist">
@@ -330,15 +196,7 @@
                             <a href="#" class="span hover-2">{{ project.category.name }}</a>
                           </div>
 
-                          <!-- <div class="wrapper">
-                            <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
-                            <span class="span">{{ project.author.username }}</span>
-                          </div> -->
 
-                          <!-- <div class="wrapper">
-                            <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>
-                            <span class="span">{{ project.created_at|date:"F j, Y" }}</span>
-                          </div> -->
 
                           {% if project.live_url %}
                           <div class="wrapper">
@@ -349,28 +207,39 @@
                         </div>
 
                         <h4 class="headline headline-3">
-                          <a href="{% url 'project_detail' project.id %}" class="card-title hover-2">
-                            {{ project.title }}
+                          {% if project.auto_slug %}
+                          <a href="{% url 'project_detail' project.auto_slug %}" class="card-btn">View Project</a>
+                          {% else %}
+                          {{ project.title }}
                           </a>
+                          {% endif %}
+
+
                         </h4>
 
                         <p class="card-subtitle">
-                          {{ project.description|truncatechars:10 }}
+                          {{ project.description|truncatechars:14|safe }}
                         </p>
                         <div class="wrapper">
-                            
-                          </div>
+
+                        </div>
 
                         <div class="card-wrapper">
                           <div class="profile-card">
                             <div class="wrapper">
-                            <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
-                            <span class="span">{{ project.author.username }}</span>
-                              
+                              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+                              <span class="span">{{ project.author.username }}</span>
+
                             </div>
                             <p class="card-subtitle">{{ project.created_at|date:"F j, Y" }}</p>
                           </div>
-                          <a href="{% url 'project_detail' project.id %}" class="card-btn">View Project</a>
+                          {% if project.auto_slug %}
+                          <a href="{% url 'project_detail' project.auto_slug %}" class="card-btn">View Project</a>
+                          {% else %}
+                          <a class="card-btn disabled">Missing Slug</a>
+                          {% endif %}
+
+
                         </div>
                       </div>
                     </div>
@@ -389,8 +258,8 @@
       <img src="./static/assets/images/shadow-3.svg" width="500" height="1500" loading="lazy" alt=""
         class="feature-bg" />
     </section>
-    
-    
+
+
 
     <!-- 
        #FEATURED Blogs
@@ -398,11 +267,13 @@
 
     <section class="section feature" aria-label="feature" id="featured">
       <div class="container">
+        {% for bh in objc_header %}
         <h2 class="headline headline-2 section-title">
-          <span class="span">Fatured Blogs</span>
+          <span class="span">{{bh.blog_title}}</span>
         </h2>
 
-        <p class="section-text">Featured and highly rated articles</p>
+        <p class="section-text">{{bh.blog_des}}</p>
+        {% endfor %}
 
         <ul class="feature-list">
           <li></li>
@@ -476,7 +347,7 @@
       <img src="./static/assets/images/shadow-3.svg" width="500" height="1500" loading="lazy" alt=""
         class="feature-bg" />
     </section>
-    
+
 
     <!-- 
         - #RECENT POST
