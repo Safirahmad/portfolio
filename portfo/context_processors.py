@@ -1,4 +1,5 @@
 from header.models import SiteSettings, cv
+from footer.models import Footer
 
 def global_header_data(request):
     try:
@@ -15,3 +16,7 @@ def global_header_data(request):
         'logo_file': logo_file,
         'cv_file': cv_file
     }
+
+def global_footer_data(request):
+    footer = Footer.objects.last()
+    return {'footer_data': footer}

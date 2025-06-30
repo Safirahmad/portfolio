@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "social",
     "education",
     'header',
+    'footer.apps.FooterConfig',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +70,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 'portfo.context_processors.global_header_data',
+                'portfo.context_processors.global_footer_data',
 
             ],
         },

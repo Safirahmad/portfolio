@@ -1,205 +1,186 @@
-   <!-- 
+<!-- 
     - #FOOTER
   -->
 {% load static %}
-    <footer>
-      <div class="container">
-        <div class="card footer">
-          <div class="section footer-top">
-            <div class="footer-brand">
-              <a href="#" class="logo">
-                <img
-                  src="{% static 'assets/images/logo.svg' %}"
-                  width="119"
-                  height="37"
-                  loading="lazy"
-                  alt="Wren logo"
-                />
-              </a>
 
-              <p class="footer-text">
-                When an unknown prnoto sans took a galley and scrambled it to
-                make specimen book not only five When an unknown prnoto sans
-                took a galley and scrambled it to five centurie.
-              </p>
+<footer>
+  <div class="container">
+    <div class="card footer">
+      <div class="section footer-top">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <img src="{{logo_file.logs.url}}" width="119" height="37" loading="lazy" alt="Wren logo" />
+          </a>
 
-              <p class="footer-list-title">Address</p>
+          <p class="footer-text">
+            {% if footer_data %}
+          <p>{{ footer_data.footer_about }}</p>
+          {% else %}
+          <p>Footer data not available.</p>
+          {% endif %}
 
-              <address class="footer-text address">
-                123 Main Street <br />
-                New York, NY 10001
-              </address>
-            </div>
+          </p>
 
-            <div class="footer-list">
-              <p class="footer-list-title">Categories</p>
+          <p class="footer-list-title">Address</p>
 
-              <ul>
-                <li>
-                  <a href="#" class="footer-link hover-2">Action</a>
-                </li>
+          <address class="footer-text address">
+            {{footer_data.footer_location}}
+          </address>
+        </div>
 
-                <li>
-                  <a href="#" class="footer-link hover-2">Business</a>
-                </li>
+        <div class="footer-list">
+          <p class="footer-list-title">Categories</p>
 
-                <li>
-                  <a href="#" class="footer-link hover-2">Adventure</a>
-                </li>
+          <ul>
+            <li>
+              <a href="#" class="footer-link hover-2">Action</a>
+            </li>
 
-                <li>
-                  <a href="#" class="footer-link hover-2">Canada</a>
-                </li>
+            <li>
+              <a href="#" class="footer-link hover-2">Business</a>
+            </li>
 
-                <li>
-                  <a href="#" class="footer-link hover-2">America</a>
-                </li>
+            <li>
+              <a href="#" class="footer-link hover-2">Adventure</a>
+            </li>
 
-                <li>
-                  <a href="#" class="footer-link hover-2">Curiosity</a>
-                </li>
+            <li>
+              <a href="#" class="footer-link hover-2">Canada</a>
+            </li>
 
-                <li>
-                  <a href="#" class="footer-link hover-2">Animal</a>
-                </li>
+            <li>
+              <a href="#" class="footer-link hover-2">America</a>
+            </li>
 
-                <li>
-                  <a href="#" class="footer-link hover-2">Dental</a>
-                </li>
+            <li>
+              <a href="#" class="footer-link hover-2">Curiosity</a>
+            </li>
 
-                <li>
-                  <a href="#" class="footer-link hover-2">Biology</a>
-                </li>
+            <li>
+              <a href="#" class="footer-link hover-2">Animal</a>
+            </li>
 
-                <li>
-                  <a href="#" class="footer-link hover-2">Design</a>
-                </li>
+            <li>
+              <a href="#" class="footer-link hover-2">Dental</a>
+            </li>
 
-                <li>
-                  <a href="#" class="footer-link hover-2">Breakfast</a>
-                </li>
+            <li>
+              <a href="#" class="footer-link hover-2">Biology</a>
+            </li>
 
-                <li>
-                  <a href="#" class="footer-link hover-2">Dessert</a>
-                </li>
-              </ul>
-            </div>
+            <li>
+              <a href="#" class="footer-link hover-2">Design</a>
+            </li>
 
-            <div class="footer-list">
-              <p class="footer-list-title">Newsletter</p>
+            <li>
+              <a href="#" class="footer-link hover-2">Breakfast</a>
+            </li>
 
-              <p class="footer-text">
-                Sign up to be first to receive the latest stories inspiring us,
-                case studies, and industry news.
-              </p>
+            <li>
+              <a href="#" class="footer-link hover-2">Dessert</a>
+            </li>
+          </ul>
+        </div>
 
-              <div class="input-wrapper">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Your name"
-                  required
-                  class="input-field"
-                  autocomplete="off"
-                />
+        <div class="footer-list">
+          <p class="footer-list-title">Newsletter</p>
 
-                <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
-              </div>
+          <p class="footer-text">
+            Sign up to be first to receive the latest stories inspiring us,
+            case studies, and industry news.
+          </p>
 
-              <div class="input-wrapper">
-                <input
-                  type="email"
-                  name="email_address"
-                  placeholder="Emaill address"
-                  required
-                  class="input-field"
-                  autocomplete="off"
-                />
+          <div class="input-wrapper">
+            <input type="text" name="name" placeholder="Your name" required class="input-field" autocomplete="off" />
 
-                <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
-              </div>
-
-              <a href="#" class="btn btn-primary">
-                <span class="span">Subscribe</span>
-
-                <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-              </a>
-            </div>
+            <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
           </div>
 
-          <div class="footer-bottom">
-            <p class="copyright">
-              &copy; Developed by
-              <a href="#" class="copyright-link">codewithsadee.</a>
-            </p>
+          <div class="input-wrapper">
+            <input type="email" name="email_address" placeholder="Emaill address" required class="input-field"
+              autocomplete="off" />
 
-            <ul class="social-list">
-              <li>
-                <a href="#" class="social-link">
-                  <ion-icon name="logo-twitter"></ion-icon>
-
-                  <span class="span">Twitter</span>
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="social-link">
-                  <ion-icon name="logo-linkedin"></ion-icon>
-
-                  <span class="span">LinkedIn</span>
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="social-link">
-                  <ion-icon name="logo-instagram"></ion-icon>
-
-                  <span class="span">Instagram</span>
-                </a>
-              </li>
-            </ul>
+            <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
           </div>
+
+          <a href="#" class="btn btn-primary">
+            <span class="span">Subscribe</span>
+
+            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+          </a>
         </div>
       </div>
-    </footer>
 
-    <!-- 
+      <div class="footer-bottom">
+        <p class="copyright">
+          &copy; Developed by
+          <a href="#" class="copyright-link"> {{footer_data.copyright}}</a>
+        </p>
+
+        <ul class="social-list">
+         
+
+          <li>
+            <a href="{{footer_data.linkedin_url }}" class="social-link" target="_blank">
+              <ion-icon name="logo-linkedin"></ion-icon>
+
+              <span class="span">LinkedIn</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{footer_data.github_url }}" class="social-link" target="_blank">
+              <ion-icon name="logo-github"></ion-icon>
+
+              <span class="span">Github</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{footer_data.youtube_url }}" class="social-link" target="_blank">
+              <ion-icon name="logo-youtube"></ion-icon>
+
+              <span class="span">YouTube</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="{{footer_data.instagram_url }}" class="social-link" target="_blank">
+              <ion-icon name="logo-instagram"></ion-icon>
+
+              <span class="span">Instagram</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- 
     - #BACK TO TOP
   -->
 
 
-    <a
-      href="#top"
-      class="back-top-btn"
-      aria-label="back to top"
-      data-back-top-btn
-    >
-      <ion-icon name="arrow-up-outline" aria-hidden="true"></ion-icon>
-    </a>
+<a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+  <ion-icon name="arrow-up-outline" aria-hidden="true"></ion-icon>
+</a>
 
-    <!-- 
+<!-- 
     - custom js link
   -->
-    <script src="{% static 'assets/js/script.js' %}"></script>
-    <script src="{% static 'assets/js/tabe.js' %}"></script>
+<script src="{% static 'assets/js/script.js' %}"></script>
+<script src="{% static 'assets/js/tabe.js' %}"></script>
 
 
-    <!-- 
+<!-- 
     - ionicon link
   -->
-    
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-        crossorigin="anonymous"></script>
-  </body>
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
 
 
 </html>
